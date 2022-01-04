@@ -65,15 +65,17 @@
                     </div>
             </div>
             <!-- DATE  -->
-            <div class="col d-box text-center">
+            <div class="col d-box text-center ">
                 <br />
-                <span class="text-muted"> Departing On </span>
-                <Datepicker v-model="depdate" class="text-center" :disabled-dates="states.disabledDates" :placeholder="pick">
-                </Datepicker>
-                <hr class="my-4" />
-                <span class="text-muted"> Returning On </span>
-                <Datepicker v-model="arrdate" class="text-center mb-4" :disabled-dates="states.disabledDates" :placeholder="pick">
-                </Datepicker>
+                <p class="text-muted"> Departing On &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returning On </p> 
+                <br />
+                <HotelDatePicker  
+                        @check-in-changed="checkInDate"
+                        @check-out-changed="checkOutDate"
+                        format="YYYY-MM-DD"
+                >
+                    
+                </HotelDatePicker>
             </div>
             </div>
             <!-- for search -->
@@ -115,6 +117,8 @@
 
 <script>
 import axios from 'axios';
+import HotelDatePicker from 'vue-hotel-datepicker'
+import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
 export default {
   data () {
     return {
@@ -122,19 +126,26 @@ export default {
       statusto: null,
       flight_from_api: [],
       flight_to_api: [],
-      depdate: null,
-      arrdate: null,
       from: null,
       to: null,
-      pick: "Pick a Date",
-      states: {
-        disabledDates: {
-          
-        },
+      dates: {
+        in: new Date().toISOString().slice(0, 10),
+        out: new Date().toISOString().slice(0, 10),
       },
+
+    
     }
   },
   methods:{
+      checkInDate(val) {
+      this.dates.in = val.toISOString().slice(0, 10);
+      console.log(this.dates.in);
+    },
+    checkOutDate(val) {
+      this.dates.out = val.toISOString().slice(0, 10);
+      console.log(this.dates.out);
+    },
+
     searchfrom() {
       this.statusfrom = true;
         axios
@@ -255,6 +266,9 @@ export default {
 
     }
 
+  },
+  components: {
+    HotelDatePicker,
   }
   };
 
