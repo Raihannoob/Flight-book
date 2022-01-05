@@ -141,8 +141,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="evening">December-February <br>
-                                High- &nbsp;&nbsp; &nbsp;&nbsp; Low-</p>
+                            <p id="evening"></p>
                         </div>
                         <div class="card-footer">
 
@@ -164,8 +163,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="night">December-February <br>
-                                High- &nbsp;&nbsp; &nbsp;&nbsp; Low-</p>
+                            <p id="night"></p>
                         </div>
                         <div class="card-footer">
 
@@ -342,9 +340,9 @@ export default {
       if (this.destenation.length > 0) {
       axios
                   .get(
-                    "http://api.weatherapi.com/v1/history.json?key=fc00f9be98e04968a3535808213112&q=" +
+                    "http://api.weatherapi.com/v1/forecast.json?key=fc00f9be98e04968a3535808213112&q=" +
                       this.destenation +
-                      "&dt=2022-01-01"
+                      "&dt=2022-01-19" //weather api give me 14 days forcast data so I use fixed date otherwise I use this.date.to date for Forcast 
                   )
                   .then((response) => {
                     document.getElementById("weather_display").style.display = "flex";
