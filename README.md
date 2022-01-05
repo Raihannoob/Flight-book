@@ -39,7 +39,7 @@ npm run dev
 !["upper portion"](https://ibb.co/qMzFrYt/Screenshot from 2022-01-05 17-21-18.png)
 !["upper portion"](https://ibb.co/z2fnsxm)
 !["upper portion"](https://ibb.co/6sWbqDs)
-!["upper portion"](https://ibb.co/PZ9cHkN)
+!["upper portion"](https://i.ibb.co/fYnkwJ2/Screenshot-from-2022-01-05-17-22-05.png)
 
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
