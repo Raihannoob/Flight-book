@@ -84,7 +84,7 @@
             </div>
             <!-- for weather -->
             <div class="row justify-content-center bg-light  mt-2 mb-2" id="weather_display" style="display: none">
-                    <p id="city" style="text-align: center;"> Weather from </p>
+                    <p id="city" style="text-align: center; color: #C70039 "></p>
             </div>
 
         <div class="row" id="weather_display1" style="display: none">
@@ -173,7 +173,53 @@
                  </div>
 
          </div>
+            <!-- for table to show available flights -->
+           <div class="row d-box justify-content-center mt-2" id="display_flight" style="display: none">
+            <h4 class="row  justify-content-center mt-4 ">
+              Available Flight Information
+            </h4>
+           </div>
+            <div class="row justify-content-center  mb-2" id="display_flight1" style="display: none">
 
+                <div class="col d-box text-center p-4">
+                    <table style="width: 100% " class="flight_list_display" >
+                        <tr>
+                          <th>
+                            Flight
+                          </th>
+                          <th>
+                            Departure
+                          </th>
+                          <th>
+                            Duration
+                          </th>
+                          <th>
+                            Arrival
+                          </th>
+                          <th>
+                            Price
+                          </th>
+                        </tr>
+                        <tr v-for="user in users" :key="user.id">
+                          <th> {{user. Flight}}</th>
+                          <th>
+                            {{user.Departure}}
+                          </th>
+                          <th>
+                            {{user.Duration}}
+                          </th>
+                          <th>
+                            {{user.Arrival}}
+                          </th>
+                          <th>
+                            {{user.Price}}
+                          </th>
+                        </tr>
+  
+                      </table>
+
+                    </div>
+            </div>
     
 
 
@@ -185,9 +231,11 @@
 import axios from 'axios';
 import HotelDatePicker from 'vue-hotel-datepicker'
 import 'vue-hotel-datepicker/dist/vueHotelDatepicker.css';
+import usersData from "./users.json";
 export default {
   data () {
     return {
+       users: usersData,
       statusfrom: null,
       statusto: null,
       flight_from_api: [],
@@ -334,8 +382,10 @@ export default {
 
     },
      getFlight() {
-       document.getElementById("weather_display").style.display = "none";
-       document.getElementById("weather_display1").style.display = "none";
+      document.getElementById("weather_display").style.display = "none";
+      document.getElementById("weather_display1").style.display = "none";
+      document.getElementById("display_flight").style.display = "none";
+      document.getElementById("display_flight1").style.display = "none";
       
       if (this.destenation.length > 0) {
       axios
@@ -346,7 +396,9 @@ export default {
                   )
                   .then((response) => {
                     document.getElementById("weather_display").style.display = "flex";
-       document.getElementById("weather_display1").style.display = "flex";
+                    document.getElementById("weather_display1").style.display = "flex";
+                    document.getElementById("display_flight").style.display = "flex";
+                    document.getElementById("display_flight1").style.display = "flex";
        document.getElementById(
               "city"
             ).innerHTML = `Weather For <b>${this.destenation}</b>`;
@@ -488,4 +540,12 @@ export default {
 .btn{
   background-color:  #88B04B;
 }
+table,
+th,
+tr,
+td {
+  border: 2px solid  grey;
+  text-align: center;
+}
+
 </style>
