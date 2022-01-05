@@ -179,7 +179,7 @@
               Available Flight Information
             </h4>
            </div>
-            <div class="row justify-content-center  mb-2" id="display_flight1" style="display: none">
+            <div class="row justify-content-center  mb-2" id="display_flight1" v-if="flight_info">
 
                 <div class="col d-box text-center p-4">
                     <table style="width: 100% " class="flight_list_display" >
@@ -243,6 +243,7 @@ export default {
       from: null,
       to: null,
       destenation:null,
+      flight_info:null,
       dates: {
         in: new Date().toISOString().slice(0, 10),
         out: new Date().toISOString().slice(0, 10),
@@ -385,8 +386,7 @@ export default {
       document.getElementById("weather_display").style.display = "none";
       document.getElementById("weather_display1").style.display = "none";
       document.getElementById("display_flight").style.display = "none";
-      document.getElementById("display_flight1").style.display = "none";
-      
+      this.flight_info=false;
       if (this.destenation.length > 0) {
       axios
                   .get(
@@ -398,7 +398,7 @@ export default {
                     document.getElementById("weather_display").style.display = "flex";
                     document.getElementById("weather_display1").style.display = "flex";
                     document.getElementById("display_flight").style.display = "flex";
-                    document.getElementById("display_flight1").style.display = "flex";
+                    this.flight_info=true;
        document.getElementById(
               "city"
             ).innerHTML = `Weather For <b>${this.destenation}</b>`;
