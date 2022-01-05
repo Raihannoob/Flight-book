@@ -18,12 +18,12 @@ npm run build
 npm run build --report
 ```
 #install Vue CLi
-npm install -g @vue/cli
-npm update -g @vue/cli
-npm install -g @vue/cli-init
-vue intit webpack projectname
-npm install --save axios vue-axios
-npm install vue-hotel-datepicker --save
+npm install -g @vue/cli<br>
+npm update -g @vue/cli<br>
+npm install -g @vue/cli-init<br>
+vue intit webpack projectname<br>
+npm install --save axios vue-axios<br>
+npm install vue-hotel-datepicker --save<br>
 
 #compile
 npm run dev
