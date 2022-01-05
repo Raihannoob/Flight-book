@@ -17,7 +17,7 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-#install Vue CLi
+# install Vue CLi
 npm install -g @vue/cli<br>
 npm update -g @vue/cli<br>
 npm install -g @vue/cli-init<br>
@@ -25,17 +25,17 @@ vue intit webpack projectname<br>
 npm install --save axios vue-axios<br>
 npm install vue-hotel-datepicker --save<br>
 
-#compile
+# compile
 npm run dev
 
-#DESCRIPTION
+# DESCRIPTION
 ~ A flight booking interface for the  user. <br>
 ~ User friendly Interface. <br>
 ~ User can easily find the airport information. <br>
 ~ User can select date for travel. <br>
 ~ User can be informed about the destination Weather Forcast before their travel. <br>
 ~ forecast API included.<br>
-#screenshort
+# screenshort
 !["upper portion"](https://ibb.co/qMzFrYt)
 !["upper portion"](https://ibb.co/z2fnsxm)
 !["upper portion"](https://ibb.co/6sWbqDs)
