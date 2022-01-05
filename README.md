@@ -36,7 +36,7 @@ npm run dev
 ~ User can be informed about the destination Weather Forcast before their travel. <br>
 ~ forecast API included.<br>
 # screenshort
-!["upper portion"](https://ibb.co/qMzFrYt)
+!["upper portion"](https://ibb.co/qMzFrYt/Screenshot from 2022-01-05 17-21-18.png)
 !["upper portion"](https://ibb.co/z2fnsxm)
 !["upper portion"](https://ibb.co/6sWbqDs)
 !["upper portion"](https://ibb.co/PZ9cHkN)
