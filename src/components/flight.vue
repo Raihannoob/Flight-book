@@ -52,7 +52,7 @@
                             @input="searchto()" />
                     </div>
                     <p id="tocity"></p>
-                    <div class="from-list" v-if="statusto" style="position: absolute; z-index: 1000" id="flightto-list">
+                    <div class="from-list" v-if="statusto" style="position: absolute; z-index: 1000" id="flightto-list" >
                        <table>
                           <tr v-for="(list, index) in flight_to_api"
                               :key="index"
@@ -84,7 +84,7 @@
             </div>
             <!-- for weather -->
             <div class="row justify-content-center bg-light  mt-2 mb-2" id="weather_display" style="display: none">
-                    <p id="weather_city" style="text-align: center;"> Weather from </p>
+                    <p id="city" style="text-align: center;"> Weather from </p>
             </div>
 
         <div class="row" id="weather_display1" style="display: none">
@@ -99,8 +99,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="weather_morning">December-February <br>
-                                High- &nbsp;&nbsp; &nbsp;&nbsp; Low-</p>
+                            <p id="morning"></p>
                         </div>
                         <div class="card-footer">
 
@@ -120,8 +119,7 @@
                         </svg>
                         </div>
                         <div class="card-body">
-                            <p id="weather_afternoon">December-February <br>
-                                High- &nbsp;&nbsp; &nbsp;&nbsp; Low-</p>
+                            <p id="afternoon"></p>
                         </div>
                         <div class="card-footer">
 
@@ -143,7 +141,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="weather_evening">December-February <br>
+                            <p id="evening">December-February <br>
                                 High- &nbsp;&nbsp; &nbsp;&nbsp; Low-</p>
                         </div>
                         <div class="card-footer">
@@ -166,7 +164,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="weather_overnight">December-February <br>
+                            <p id="night">December-February <br>
                                 High- &nbsp;&nbsp; &nbsp;&nbsp; Low-</p>
                         </div>
                         <div class="card-footer">
@@ -198,6 +196,7 @@ export default {
       flight_to_api: [],
       from: null,
       to: null,
+      destenation:null,
       dates: {
         in: new Date().toISOString().slice(0, 10),
         out: new Date().toISOString().slice(0, 10),
@@ -329,6 +328,7 @@ export default {
     setFlightTo(list) {
 
       this.to = list[2];
+      this.destenation =list[1];
       document.getElementById("flightto-list").style.display = "none";
       document.getElementById(
         "tocity"
@@ -336,8 +336,141 @@ export default {
 
     },
      getFlight() {
-       document.getElementById("weather_display").style.display = "flex";
-      document.getElementById("weather_display1").style.display = "flex";
+       document.getElementById("weather_display").style.display = "none";
+       document.getElementById("weather_display1").style.display = "none";
+      
+      if (this.destenation.length > 0) {
+      axios
+                  .get(
+                    "http://api.weatherapi.com/v1/history.json?key=fc00f9be98e04968a3535808213112&q=" +
+                      this.destenation +
+                      "&dt=2022-01-01"
+                  )
+                  .then((response) => {
+                    document.getElementById("weather_display").style.display = "flex";
+       document.getElementById("weather_display1").style.display = "flex";
+       document.getElementById(
+              "city"
+            ).innerHTML = `Weather For <b>${this.destenation}</b>`;
+                    console.log(response.data);
+                    var jsonObject = JSON.stringify(response.data);
+                    // console.log(jsonObject);
+                    var object = JSON.parse(jsonObject);
+                    var forecast = object.forecast.forecastday;
+                    
+                    console.log(forecast);
+                    console.log(Object.keys(object));
+                    const countryfetch =object.location.country;
+                    const cityfetch =object.location.name;
+                    console.log(countryfetch);
+                    console.log(cityfetch)
+                  
+                    const val1 = [];
+                    const val2 = [];
+                    const val3 = [];
+                    const val4 = [];
+                    // for farhinite vale
+                    const far1 = [];
+                    const far2 = [];
+                    const far3 = [];
+                    const far4 = [];
+                   
+                    for(var i =0; i<6; i++) {
+                        console.log(forecast[0].hour[i].temp_c);
+                        val1.push(forecast[0].hour[i].temp_c)
+                      }
+                      const sort1 = val1.sort();
+                      console.log(sort1[0]);
+                      console.log(sort1[sort1.length-1]); 
+                      const low1 = Math.round(sort1[0]);
+                      const high1 = Math.round(sort1[sort1.length-1]);
+                    //  for farhinite
+                    for(var i =0; i<6; i++) {
+                      console.log(forecast[0].hour[i].temp_f);
+                      far1.push(forecast[0].hour[i].temp_f)
+                    }
+                    const sortf1 = far1.sort();
+                    console.log(sortf1[0]);
+                    console.log(sortf1[sortf1.length-1]); 
+                    const lowf1 = Math.round(sortf1[0]);
+                    const highf1 = Math.round(sortf1[sortf1.length-1]);
+
+                     document.getElementById(
+                      "morning").innerHTML = `<b>MORNING</b><br><br><b>HIgh-${high1}℃ &nbsp&nbsp Low-${low1}℃ <br>HIgh-${highf1}°F &nbsp&nbsp Low-${lowf1}°F  </b>`;
+
+
+                      // time 2
+                    for(var i =6; i<12; i++) {
+                        console.log(forecast[0].hour[i].temp_c);
+                        val2.push(forecast[0].hour[i].temp_c)
+                      }
+                      const sort2 = val2.sort();
+                      console.log(sort2[0]);
+                      console.log(sort2[sort2.length-1]); 
+                      const low2 = Math.round( sort2[0]);
+                      const high2 = Math.round(sort2[sort2.length-1]);
+                    //for ferhinite
+                    for(var i =6; i<12; i++) {
+                      console.log(forecast[0].hour[i].temp_f);
+                      far2.push(forecast[0].hour[i].temp_f)
+                    }
+                    const sortf2 = far2.sort();
+                    console.log(sortf2[0]);
+                    console.log(sortf2[sortf2.length-1]); 
+                    const lowf2 =Math.round( sortf2[0]);
+                    const highf2 = Math.round(sortf2[sortf2.length-1]);
+                    document.getElementById(
+                    "afternoon").innerHTML = `<b>Afternoon</b><br><br><b>HIgh-${high2}℃ &nbsp&nbsp Low-${low2}℃ <br>HIgh-${highf2}°F &nbsp&nbsp Low-${lowf2}°F  </b>`;
+                      // time 3 
+                    for(var i =12; i<18; i++) {
+                      console.log(forecast[0].hour[i].temp_c);
+                      val3.push(forecast[0].hour[i].temp_c)
+                      }
+                      const sort3 = val3.sort();
+                      console.log(sort3[0]);
+                      console.log(sort3[sort3.length-1]); 
+                      const low3 = Math.round(sort3[0]);
+                      const high3 = Math.round(sort3[sort3.length-1]);
+                      // for ferhinite
+                    for(var i =12; i<18; i++) {
+                        console.log(forecast[0].hour[i].temp_f);
+                        far3.push(forecast[0].hour[i].temp_f)
+                      }
+                      const sortf3 = far3.sort();
+                      console.log(sortf3[0]);
+                      console.log(sortf3[sortf3.length-1]); 
+                      const lowf3 = Math.round(sortf3[0]);
+                      const highf3 = Math.round(sortf3[sortf3.length-1]);
+                      document.getElementById(
+                      "evening").innerHTML = `<b>Evening</b><br><br><b>HIgh-${high3}℃ &nbsp&nbsp Low-${low3}℃ <br>HIgh-${highf3}°F &nbsp&nbsp Low-${lowf3}°F  </b>`;
+                      // time4
+                    for(var i =18; i<24; i++) {
+                      console.log(forecast[0].hour[i].temp_c);
+                        val4.push(forecast[0].hour[i].temp_c)
+                      }
+                      const sort4 = val4.sort();
+                      console.log(sort4[0]);
+                      console.log(sort4[sort4.length-1]); 
+                      const low4 = Math.round(sort4[0]);
+                      const high4 = Math.round(sort4[sort4.length-1]);
+                      // for farhinite
+                      for(var i =18; i<24; i++) {
+                        console.log(forecast[0].hour[i].temp_f);
+                          far4.push(forecast[0].hour[i].temp_f)
+                        }
+                        const sortf4 = far4.sort();
+                        console.log(sortf4[0]);
+                        console.log(sortf4[sortf4.length-1]); 
+                        const lowf4 = Math.round(sortf4[0]);
+                        const highf4 = Math.round(sortf4[sortf4.length-1]);
+                        document.getElementById(
+                        "night").innerHTML = `<b>Night</b><br><br><b>HIgh-${high4}℃ &nbsp&nbsp Low-${low4}℃ <br>HIgh-${highf4}°F &nbsp&nbsp Low-${lowf4}°F  </b>`;
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+      }
+
      }
 
   },
