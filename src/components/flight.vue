@@ -84,7 +84,7 @@
             </div>
             <!-- for weather -->
             <div class="row justify-content-center bg-light  mt-2 mb-2" id="weather_display" style="display: none">
-                    <p id="city" style="text-align: center; color: #C70039 "></p>
+                    <p id="city" style="text-align: center; color: #C70039 ">Weather For {{Weather_city}}</p>
             </div>
 
         <div class="row" id="weather_display1" style="display: none">
@@ -99,7 +99,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="morning"></p>
+                            <p id="morning"> <b>Morning</b> <b><br> <br>High-&nbsp; {{high1c}}℃  &nbsp;&nbsp; Low- {{low1c}}℃ <br>High-{{High1f}}°F &nbsp;&nbsp; Low-{{low1f}}°F </b> </p>
                         </div>
                         <div class="card-footer">
 
@@ -119,7 +119,7 @@
                         </svg>
                         </div>
                         <div class="card-body">
-                            <p id="afternoon"></p>
+                            <p id="afternoon"><b>Afternoon</b> <b><br> <br>High-&nbsp; {{high2c}}℃  &nbsp;&nbsp; Low- {{low2c}}℃ <br>High-{{High2f}}°F &nbsp;&nbsp; Low-{{low2f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
@@ -141,7 +141,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="evening"></p>
+                            <p id="evening"><b>Evening</b> <b><br> <br>High-&nbsp; {{high3c}}℃  &nbsp;&nbsp; Low- {{low3c}}℃ <br>High-{{High3f}}°F &nbsp;&nbsp; Low-{{low3f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
@@ -163,7 +163,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="night"></p>
+                            <p id="night"><b>Night</b> <b><br> <br>High-&nbsp; {{high4c}}℃  &nbsp;&nbsp; Low- {{low4c}}℃ <br>High-{{High4f}}°F &nbsp;&nbsp; Low-{{low4f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
@@ -244,6 +244,23 @@ export default {
       to: null,
       destenation:null,
       flight_info:null,
+      Weather_city: "",
+      high1c: "",
+      low1c: "",
+      High1f:"",
+      low1f:"",
+      high2c: "",
+      low2c: "",
+      High2f:"",
+      low2f:"",
+      high3c: "",
+      low3c: "",
+      High3f:"",
+      low3f:"",
+      high4c: "",
+      low4c: "",
+      High4f:"",
+      low4f:"",
       dates: {
         in: new Date().toISOString().slice(0, 10),
         out: new Date().toISOString().slice(0, 10),
@@ -399,9 +416,7 @@ export default {
                     document.getElementById("weather_display1").style.display = "flex";
                     document.getElementById("display_flight").style.display = "flex";
                     this.flight_info=true;
-       document.getElementById(
-              "city"
-            ).innerHTML = `Weather For <b>${this.destenation}</b>`;
+                    this.Weather_city  = this.destenation;
                     console.log(response.data);
                     var jsonObject = JSON.stringify(response.data);
                     // console.log(jsonObject);
@@ -445,8 +460,10 @@ export default {
                     const lowf1 = Math.round(sortf1[0]);
                     const highf1 = Math.round(sortf1[sortf1.length-1]);
 
-                     document.getElementById(
-                      "morning").innerHTML = `<b>MORNING</b><br><br><b>HIgh-${high1}℃ &nbsp&nbsp Low-${low1}℃ <br>HIgh-${highf1}°F &nbsp&nbsp Low-${lowf1}°F  </b>`;
+                    this.high1c=high1;
+                    this.low1c=low1;
+                    this.High1f=highf1;
+                    this.low1f=lowf1;
 
 
                       // time 2
@@ -469,8 +486,12 @@ export default {
                     console.log(sortf2[sortf2.length-1]); 
                     const lowf2 =Math.round( sortf2[0]);
                     const highf2 = Math.round(sortf2[sortf2.length-1]);
-                    document.getElementById(
-                    "afternoon").innerHTML = `<b>Afternoon</b><br><br><b>HIgh-${high2}℃ &nbsp&nbsp Low-${low2}℃ <br>HIgh-${highf2}°F &nbsp&nbsp Low-${lowf2}°F  </b>`;
+
+
+                    this.high2c=high2;
+                    this.low2c=low1;
+                    this.High2f=highf1;
+                    this.low2f=lowf1;
                       // time 3 
                     for(var i =12; i<18; i++) {
                       console.log(forecast[0].hour[i].temp_c);
@@ -491,8 +512,11 @@ export default {
                       console.log(sortf3[sortf3.length-1]); 
                       const lowf3 = Math.round(sortf3[0]);
                       const highf3 = Math.round(sortf3[sortf3.length-1]);
-                      document.getElementById(
-                      "evening").innerHTML = `<b>Evening</b><br><br><b>HIgh-${high3}℃ &nbsp&nbsp Low-${low3}℃ <br>HIgh-${highf3}°F &nbsp&nbsp Low-${lowf3}°F  </b>`;
+                      
+                    this.high3c=high3;
+                    this.low3c=low3;
+                    this.High3f=highf3;
+                    this.low3f=lowf3;
                       // time4
                     for(var i =18; i<24; i++) {
                       console.log(forecast[0].hour[i].temp_c);
@@ -513,8 +537,11 @@ export default {
                         console.log(sortf4[sortf4.length-1]); 
                         const lowf4 = Math.round(sortf4[0]);
                         const highf4 = Math.round(sortf4[sortf4.length-1]);
-                        document.getElementById(
-                        "night").innerHTML = `<b>Night</b><br><br><b>HIgh-${high4}℃ &nbsp&nbsp Low-${low4}℃ <br>HIgh-${highf4}°F &nbsp&nbsp Low-${lowf4}°F  </b>`;
+                        
+                        this.high4c=high4;
+                        this.low4c=low4;
+                        this.High4f=highf4;
+                        this.low4f=lowf4;
                   })
                   .catch((error) => {
                     console.log(error);
