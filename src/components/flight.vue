@@ -99,7 +99,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="morning"> <b>Morning</b> <b><br> <br>High-&nbsp; {{high1c}}℃  &nbsp;&nbsp; Low- {{low1c}}℃ <br>High-{{High1f}}°F &nbsp;&nbsp; Low-{{low1f}}°F </b> </p>
+                            <p id="morning"> <b>Overnight</b> <b><br> <br>High-&nbsp; {{high1c}}℃  &nbsp;&nbsp; Low- {{low1c}}℃ <br>High-{{High1f}}°F &nbsp;&nbsp; Low-{{low1f}}°F </b> </p>
                         </div>
                         <div class="card-footer">
 
@@ -119,7 +119,7 @@
                         </svg>
                         </div>
                         <div class="card-body">
-                            <p id="afternoon"><b>Afternoon</b> <b><br> <br>High-&nbsp; {{high2c}}℃  &nbsp;&nbsp; Low- {{low2c}}℃ <br>High-{{High2f}}°F &nbsp;&nbsp; Low-{{low2f}}°F </b></p>
+                            <p id="afternoon"><b>Morning</b> <b><br> <br>High-&nbsp; {{high2c}}℃  &nbsp;&nbsp; Low- {{low2c}}℃ <br>High-{{High2f}}°F &nbsp;&nbsp; Low-{{low2f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
@@ -141,7 +141,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="evening"><b>Evening</b> <b><br> <br>High-&nbsp; {{high3c}}℃  &nbsp;&nbsp; Low- {{low3c}}℃ <br>High-{{High3f}}°F &nbsp;&nbsp; Low-{{low3f}}°F </b></p>
+                            <p id="evening"><b>Afternoon</b> <b><br> <br>High-&nbsp; {{high3c}}℃  &nbsp;&nbsp; Low- {{low3c}}℃ <br>High-{{High3f}}°F &nbsp;&nbsp; Low-{{low3f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
@@ -163,7 +163,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="night"><b>Night</b> <b><br> <br>High-&nbsp; {{high4c}}℃  &nbsp;&nbsp; Low- {{low4c}}℃ <br>High-{{High4f}}°F &nbsp;&nbsp; Low-{{low4f}}°F </b></p>
+                            <p id="night"><b>Evening</b> <b><br> <br>High-&nbsp; {{high4c}}℃  &nbsp;&nbsp; Low- {{low4c}}℃ <br>High-{{High4f}}°F &nbsp;&nbsp; Low-{{low4f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
