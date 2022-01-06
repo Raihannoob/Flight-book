@@ -5,16 +5,6 @@
   <img src="https://img.shields.io/badge/npm-%3E%3D%203.0.0-blue.svg" />
 </p>
 
-> ~ A flight booking interface for the  user. <br>
-
-### 🏠 [Homepage](~ User can Show available Flight Information.<br>)
-
-### ✨ [Demo]( http://localhost:8081)
-
-## Prerequisites
-
-- node >= 14.0.0
-- npm >= 3.0.0
 # A flight-booking Interface using Vue js
 
 This is 
