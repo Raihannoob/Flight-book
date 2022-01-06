@@ -34,7 +34,7 @@ npm run dev
 ~ User can easily find the airport information. <br>
 ~ User can select date for travel. <br>
 ~ User can be informed about the destination Weather Forcast before their travel. <br>
-~ forecast API included.<br>
+~ https://rapidapi.com/weatherapi/api/weatherapi-com/ forecast API included.<br>
 ~ User can Show available Flight Information.<br>
 # Screenshot 
 !["upper portion"](https://i.ibb.co/PZRz6G7/Screenshot-from-2022-01-05-17-21-18.png)
