@@ -99,7 +99,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="morning"> <b>Overnight</b> <b><br> <br>High-&nbsp; {{high1c}}℃  &nbsp;&nbsp; Low- {{low1c}}℃ <br>High-{{High1f}}°F &nbsp;&nbsp; Low-{{low1f}}°F </b> </p>
+                            <p id="morning"> <b>Overnight</b> <b><br> <br>High:&nbsp; {{high1c}}℃  &nbsp;&nbsp; Low:&nbsp;{{low1c}}℃ <br>High-{{High1f}}°F &nbsp;&nbsp; Low:&nbsp;{{low1f}}°F </b> </p>
                         </div>
                         <div class="card-footer">
 
@@ -119,7 +119,7 @@
                         </svg>
                         </div>
                         <div class="card-body">
-                            <p id="afternoon"><b>Morning</b> <b><br> <br>High-&nbsp; {{high2c}}℃  &nbsp;&nbsp; Low- {{low2c}}℃ <br>High-{{High2f}}°F &nbsp;&nbsp; Low-{{low2f}}°F </b></p>
+                            <p id="afternoon"><b>Morning</b> <b><br> <br>High:&nbsp; {{high2c}}℃  &nbsp;&nbsp; Low:&nbsp;{{low2c}}℃ <br>High:{{High2f}}°F &nbsp;&nbsp; Low:{{low2f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
@@ -141,7 +141,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="evening"><b>Afternoon</b> <b><br> <br>High-&nbsp; {{high3c}}℃  &nbsp;&nbsp; Low- {{low3c}}℃ <br>High-{{High3f}}°F &nbsp;&nbsp; Low-{{low3f}}°F </b></p>
+                            <p id="evening"><b>Afternoon</b> <b><br> <br>High:&nbsp; {{high3c}}℃  &nbsp;&nbsp; Low:&nbsp; {{low3c}}℃ <br>High:&nbsp;{{High3f}}°F &nbsp;&nbsp; Low:&nbsp;{{low3f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
@@ -163,7 +163,7 @@
                             </svg>
                         </div>
                         <div class="card-body">
-                            <p id="night"><b>Evening</b> <b><br> <br>High-&nbsp; {{high4c}}℃  &nbsp;&nbsp; Low- {{low4c}}℃ <br>High-{{High4f}}°F &nbsp;&nbsp; Low-{{low4f}}°F </b></p>
+                            <p id="night"><b>Evening</b> <b><br> <br>High:&nbsp; {{high4c}}℃  &nbsp;&nbsp; Low:&nbsp; {{low4c}}℃ <br>High:&nbsp;S{{High4f}}°F &nbsp;&nbsp; Low:&nbsp;{{low4f}}°F </b></p>
                         </div>
                         <div class="card-footer">
 
@@ -295,9 +295,9 @@ export default {
         console.log(res.data);
         console.log(Object.values(res.data).length);
         //var responseData = Object.values(res.data);
-        var responseData = null;
-        var keys = Object.keys(res.data);
-        for(var i in keys) {
+        let responseData = null;
+        let keys = Object.keys(res.data);
+        for(let i in keys) {
           let index = keys[i];
           console.log(index);
           if(index === 'response') {
@@ -353,9 +353,9 @@ export default {
         console.log(res.data);
         console.log(Object.values(res.data).length);
         //var responseData = Object.values(res.data);
-        var responseData = null;
-        var keys = Object.keys(res.data);
-        for(var i in keys) {
+        let responseData = null;
+        let keys = Object.keys(res.data);
+        for(let i in keys) {
           let index = keys[i];
           console.log(index);
           if(index === 'response') {
@@ -405,8 +405,8 @@ export default {
       document.getElementById("display_flight1").style.display = "none";
       if (this.destenation.length > 0) {
       
-              var axios = require("axios").default;
-              var options = {
+              let axios = require("axios").default;
+              let options = {
                 method: 'GET',
                 url: 'https://weatherapi-com.p.rapidapi.com/forecast.json',
                 params: {q: this.destenation, days: '10',dt:this.dates.out },
@@ -425,10 +425,10 @@ export default {
                  document.getElementById("display_flight1").style.display = "flex";
                  this.Weather_city  = this.destenation;
                 console.log(response.data);
-                var jsonObject = JSON.stringify(response.data);
+                    let jsonObject = JSON.stringify(response.data);
                     console.log(jsonObject);
-                    var object = JSON.parse(jsonObject);
-                    var forecast = object.forecast.forecastday;
+                    let object = JSON.parse(jsonObject);
+                    let forecast = object.forecast.forecastday;
                     
                     console.log(forecast);
                     console.log(Object.keys(object));
@@ -437,35 +437,35 @@ export default {
                     console.log(countryfetch);
                     console.log(cityfetch)
                   
-                    const val1 = [];
-                    const val2 = [];
-                    const val3 = [];
-                    const val4 = [];
+                    let val1 = [];
+                    let val2 = [];
+                    let val3 = [];
+                    let val4 = [];
                     // for farhinite vale
-                    const far1 = [];
-                    const far2 = [];
-                    const far3 = [];
-                    const far4 = [];
+                    let far1 = [];
+                    let far2 = [];
+                    let far3 = [];
+                    let far4 = [];
                    
-                    for(var i =0; i<6; i++) {
+                    for(let i =0; i<6; i++) {
                         console.log(forecast[0].hour[i].temp_c);
                         val1.push(forecast[0].hour[i].temp_c)
                       }
-                      const sort1 = val1.sort();
+                      let sort1 = val1.sort();
                       console.log(sort1[0]);
                       console.log(sort1[sort1.length-1]); 
-                      const low1 = Math.round(sort1[0]);
-                      const high1 = Math.round(sort1[sort1.length-1]);
+                      let low1 = Math.round(sort1[0]);
+                      let high1 = Math.round(sort1[sort1.length-1]);
                     //  for farhinite
-                    for(var i =0; i<6; i++) {
+                    for(let i =0; i<6; i++) {
                       console.log(forecast[0].hour[i].temp_f);
                       far1.push(forecast[0].hour[i].temp_f)
                     }
-                    const sortf1 = far1.sort();
+                    let sortf1 = far1.sort();
                     console.log(sortf1[0]);
                     console.log(sortf1[sortf1.length-1]); 
-                    const lowf1 = Math.round(sortf1[0]);
-                    const highf1 = Math.round(sortf1[sortf1.length-1]);
+                    let lowf1 = Math.round(sortf1[0]);
+                    let highf1 = Math.round(sortf1[sortf1.length-1]);
 
                     this.high1c=high1;
                     this.low1c=low1;
@@ -474,25 +474,25 @@ export default {
 
 
                       // time 2
-                    for(var i =6; i<12; i++) {
+                    for(let i =6; i<12; i++) {
                         console.log(forecast[0].hour[i].temp_c);
                         val2.push(forecast[0].hour[i].temp_c)
                       }
-                      const sort2 = val2.sort();
+                      let sort2 = val2.sort();
                       console.log(sort2[0]);
                       console.log(sort2[sort2.length-1]); 
-                      const low2 = Math.round( sort2[0]);
-                      const high2 = Math.round(sort2[sort2.length-1]);
+                      let low2 = Math.round( sort2[0]);
+                      let high2 = Math.round(sort2[sort2.length-1]);
                     //for ferhinite
-                    for(var i =6; i<12; i++) {
+                    for(let i =6; i<12; i++) {
                       console.log(forecast[0].hour[i].temp_f);
                       far2.push(forecast[0].hour[i].temp_f)
                     }
-                    const sortf2 = far2.sort();
+                    let sortf2 = far2.sort();
                     console.log(sortf2[0]);
                     console.log(sortf2[sortf2.length-1]); 
-                    const lowf2 =Math.round( sortf2[0]);
-                    const highf2 = Math.round(sortf2[sortf2.length-1]);
+                    let lowf2 =Math.round( sortf2[0]);
+                    let highf2 = Math.round(sortf2[sortf2.length-1]);
 
 
                     this.high2c=high2;
@@ -500,50 +500,50 @@ export default {
                     this.High2f=highf1;
                     this.low2f=lowf1;
                       // time 3 
-                    for(var i =12; i<18; i++) {
+                    for(let i =12; i<18; i++) {
                       console.log(forecast[0].hour[i].temp_c);
                       val3.push(forecast[0].hour[i].temp_c)
                       }
-                      const sort3 = val3.sort();
+                      let sort3 = val3.sort();
                       console.log(sort3[0]);
                       console.log(sort3[sort3.length-1]); 
-                      const low3 = Math.round(sort3[0]);
-                      const high3 = Math.round(sort3[sort3.length-1]);
+                      let low3 = Math.round(sort3[0]);
+                      let high3 = Math.round(sort3[sort3.length-1]);
                       // for ferhinite
-                    for(var i =12; i<18; i++) {
+                    for(let i =12; i<18; i++) {
                         console.log(forecast[0].hour[i].temp_f);
                         far3.push(forecast[0].hour[i].temp_f)
                       }
-                      const sortf3 = far3.sort();
+                      let sortf3 = far3.sort();
                       console.log(sortf3[0]);
                       console.log(sortf3[sortf3.length-1]); 
-                      const lowf3 = Math.round(sortf3[0]);
-                      const highf3 = Math.round(sortf3[sortf3.length-1]);
+                      let lowf3 = Math.round(sortf3[0]);
+                      let highf3 = Math.round(sortf3[sortf3.length-1]);
                       
                     this.high3c=high3;
                     this.low3c=low3;
                     this.High3f=highf3;
                     this.low3f=lowf3;
                       // time4
-                    for(var i =18; i<24; i++) {
+                    for(let i =18; i<24; i++) {
                       console.log(forecast[0].hour[i].temp_c);
                         val4.push(forecast[0].hour[i].temp_c)
                       }
-                      const sort4 = val4.sort();
+                      let sort4 = val4.sort();
                       console.log(sort4[0]);
                       console.log(sort4[sort4.length-1]); 
-                      const low4 = Math.round(sort4[0]);
-                      const high4 = Math.round(sort4[sort4.length-1]);
+                      let low4 = Math.round(sort4[0]);
+                      let high4 = Math.round(sort4[sort4.length-1]);
                       // for farhinite
-                      for(var i =18; i<24; i++) {
+                      for(let i =18; i<24; i++) {
                         console.log(forecast[0].hour[i].temp_f);
                           far4.push(forecast[0].hour[i].temp_f)
                         }
-                        const sortf4 = far4.sort();
+                        let sortf4 = far4.sort();
                         console.log(sortf4[0]);
                         console.log(sortf4[sortf4.length-1]); 
-                        const lowf4 = Math.round(sortf4[0]);
-                        const highf4 = Math.round(sortf4[sortf4.length-1]);
+                        let lowf4 = Math.round(sortf4[0]);
+                        let highf4 = Math.round(sortf4[sortf4.length-1]);
                         
                         this.high4c=high4;
                         this.low4c=low4;
