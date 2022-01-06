@@ -106,9 +106,8 @@ I learn besic concept about Vue js. How vue js works and how components,props em
 ![App Screenshot](https://i.ibb.co/6tsnYwy/Screenshot-from-2022-01-05-17-21-29.png)
 ![App Screenshot](https://i.ibb.co/rywMX5y/Screenshot-from-2022-01-05-17-21-59.png)
 ![App Screenshot](https://i.ibb.co/fYnkwJ2/Screenshot-from-2022-01-05-17-22-05.png)
-## Tech Stack
-
-**Server:** Vue js,javascript,Html,Css,Bootstrap
+## Technologoy
+Vue js,javascript,Html,Css,Bootstrap
 
 
 
