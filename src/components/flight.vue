@@ -179,7 +179,7 @@
               Available Flight Information
             </h4>
            </div>
-            <div class="row justify-content-center  mb-2" id="display_flight1" v-if="flight_info">
+            <div class="row justify-content-center  mb-2" id="display_flight1" style="display: none">
 
                 <div class="col d-box text-center p-4">
                     <table style="width: 100% " class="flight_list_display" >
@@ -243,7 +243,6 @@ export default {
       from: null,
       to: null,
       destenation:null,
-      flight_info:null,
       Weather_city: "",
       high1c: "",
       low1c: "",
@@ -403,23 +402,31 @@ export default {
       document.getElementById("weather_display").style.display = "none";
       document.getElementById("weather_display1").style.display = "none";
       document.getElementById("display_flight").style.display = "none";
-      this.flight_info=false;
+      document.getElementById("display_flight1").style.display = "none";
       if (this.destenation.length > 0) {
-      axios
-                  .get(
-                    "http://api.weatherapi.com/v1/forecast.json?key=fc00f9be98e04968a3535808213112&q=" +
-                      this.destenation +
-                      "&dt=2022-01-19" //weather api give me 14 days forcast data so I use fixed date otherwise I use this.date.to date for Forcast 
-                  )
-                  .then((response) => {
-                    document.getElementById("weather_display").style.display = "flex";
-                    document.getElementById("weather_display1").style.display = "flex";
-                    document.getElementById("display_flight").style.display = "flex";
-                    this.flight_info=true;
-                    this.Weather_city  = this.destenation;
-                    console.log(response.data);
-                    var jsonObject = JSON.stringify(response.data);
-                    // console.log(jsonObject);
+      
+              var axios = require("axios").default;
+              var options = {
+                method: 'GET',
+                url: 'https://weatherapi-com.p.rapidapi.com/forecast.json',
+                params: {q: this.destenation, days: '10',dt:this.dates.out },
+                headers: {
+                  'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com',
+                  'x-rapidapi-key': '3c2ec3f5bemshb153f76bc5858a4p131b0djsna6224901994f'
+                }
+              };
+
+              axios
+              .request(options)
+               .then((response) => {
+                 document.getElementById("weather_display").style.display = "flex";
+                 document.getElementById("weather_display1").style.display = "flex";
+                 document.getElementById("display_flight").style.display = "flex";
+                 document.getElementById("display_flight1").style.display = "flex";
+                 this.Weather_city  = this.destenation;
+                console.log(response.data);
+                var jsonObject = JSON.stringify(response.data);
+                    console.log(jsonObject);
                     var object = JSON.parse(jsonObject);
                     var forecast = object.forecast.forecastday;
                     
@@ -542,10 +549,14 @@ export default {
                         this.low4c=low4;
                         this.High4f=highf4;
                         this.low4f=lowf4;
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
+
+
+              })
+              .catch(function (error) {
+                console.error(error);
+              });
+
+
       }
 
      }
