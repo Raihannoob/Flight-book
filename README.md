@@ -17,7 +17,7 @@ basically a flight booking interface for the  user.
 - User can select date for travel  
 - User can know about the destination Weather Forcast
 - User can see available Flight information(demo jeson file)
-- 
+ 
 
 
 ## Prerequisites
