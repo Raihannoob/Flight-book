@@ -37,7 +37,7 @@ basically a flight booking interface for the  user.
 ``` 
 - Then run this command 
  ```bash
-  vue intit webpack projectname
+  npm install webpack-dev-server
 ```
 - Finally, run the application using the following command
  ```bash
