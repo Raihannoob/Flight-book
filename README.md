@@ -25,22 +25,25 @@ basically a flight booking interface for the  user.
 - node >= 14.0.0
 - npm >= 3.0.0
 
+## Packages Used
+- axios
+- vue-hotel-datepicker
 ## Installation
-
-Install my-project with npm
-
-```bash
-  npm install 
-  npm install -g @vue/cli
-  npm update -g @vue/cli
-  npm install -g @vue/cli-init
+ - At first, download NodeJS stable version I use node version 14.0
+ - Then Clone this project in your computer
+ - After cloning this project then go to the project folder and install npm by this command 
+ ```bash
+  npm install
+``` 
+- Then run this command 
+ ```bash
   vue intit webpack projectname
-  npm install --save axios vue-axios
-  npm install vue-hotel-datepicker 
-  npm run dev
-
 ```
-    
+- Finally, run the application using the following command
+ ```bash
+  npm run dev
+```
+
 ## API Reference
 
 #### WeatherAPI.com
